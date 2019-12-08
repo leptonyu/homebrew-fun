@@ -6,6 +6,7 @@ class Tinc11 < Formula
 
    depends_on "lzo"
    depends_on "openssl"
+   depends_on :tuntap
 
    private def create_tc
      wrapper = '#!/bin/bash

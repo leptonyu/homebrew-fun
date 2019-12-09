@@ -6,7 +6,11 @@ class Tinc11 < Formula
 
    depends_on "lzo"
    depends_on "openssl"
-   #depends_on :tuntap
+   if OS.mac?
+   depends_on :tuntap
+   else
+   depends_on "readline"
+   end
 
    private def create_tc
      wrapper = '#!/bin/bash

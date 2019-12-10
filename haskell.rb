@@ -1,13 +1,19 @@
 class Haskell < Formula
-   desc "Haskell Tools"
-   url "https://github.com/leptonyu/homebrew-fun/raw/master/LICENSE"
-   version "1.0"
-   sha256 "1cdc0317e6c8d097ca21584fc05efe68e5d0800e9ef79cbfa22ce67db46b6b82"
+  desc "Haskell Tools"
+  url "https://github.com/leptonyu/homebrew-fun/raw/master/LICENSE"
+  version "1.0"
+  sha256 "1cdc0317e6c8d097ca21584fc05efe68e5d0800e9ef79cbfa22ce67db46b6b82"
 
-   depends_on "haskell-stack"
+  depends_on "haskell-stack"
 
-   private def create_ghci
-     wrap = '#!/bin/bash
+  private def create_format
+    wrap = '#!/bin/bash
+    find . -name \'*.hs\' | grep -v \'.stack-work\' | xargs stylish-haskell -i'
+    File.write('haskell_format', wrap)
+  end
+
+  private def create_ghci
+    wrap = '#!/bin/bash
 if [ ! -e "$HOME/.ghci_home" ]; then
   mkdir $HOME/.ghci_home
 fi
@@ -57,6 +63,8 @@ stack exec ghci --resolver $NAME $@'
      File.write('ghci', wrap)
    end
    def install
+     create_format
+     bin.install "haskell_format"
      create_ghci
      bin.install "ghci"
    end

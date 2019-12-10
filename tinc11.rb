@@ -99,6 +99,8 @@ esac'
     system "make", "install"
     create_tc
     bin.install "tc"
+    mkdir("#{var}/run")
+    mkdir("#{var}/log")
   end
 
   test do

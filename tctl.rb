@@ -6,7 +6,7 @@ class Tctl < Formula
   homepage "https://github.com/leptonyu/homebrew-fun"
   url "https://github.com/leptonyu/homebrew-fun/raw/master/tctl.tar.gz"
   version "1.1"
-  sha256 "7df5ae8ec6155143219647855eb5055866653fd28c46a7aca3c591b8c73d460c"
+  sha256 "ae8f3ba7fe101206a21ec5f82342b204ce057fbd29bb88e3322d67a45f8efc21"
 
   # depends_on "cmake" => :build
   depends_on "tinc11"

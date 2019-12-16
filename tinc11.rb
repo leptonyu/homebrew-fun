@@ -1,14 +1,12 @@
 class Tinc11 < Formula
   desc "Virtual Private Network (VPN) tool"
   homepage "https://www.tinc-vpn.org/"
-  url "https://www.tinc-vpn.org/packages/tinc-1.1pre17.tar.gz"
+  url "https://github.com/leptonyu/homebrew-fun/raw/master/tinc-1.1pre17.tar.gz"
   sha256 "61b9c9f9f396768551f39216edcc41918c65909ffd9af071feb3b5f9f9ac1c27"
 
   depends_on "lzo"
   depends_on "openssl"
-  if OS.mac?
-  depends_on :tuntap
-  else
+  if OS.linux?
   depends_on "readline"
   end
 

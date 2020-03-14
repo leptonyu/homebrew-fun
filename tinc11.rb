@@ -5,7 +5,7 @@ class Tinc11 < Formula
   sha256 "61b9c9f9f396768551f39216edcc41918c65909ffd9af071feb3b5f9f9ac1c27"
 
   depends_on "lzo"
-  depends_on "openssl"
+  depends_on "openssl@1.1"
   if OS.linux?
   depends_on "readline"
   end
@@ -99,6 +99,32 @@ esac'
     bin.install "tc"
     mkdir("#{var}/run")
     mkdir("#{var}/log")
+  end
+
+  plist_options :manual => "tinc start mt1"
+
+  def plist; <<~EOS
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+      <dict>
+        <key>Label</key>
+        <string>#{plist_name}</string>
+        <key>RunAtLoad</key>
+        <true/>
+        <key>KeepAlive</key>
+        <false/>
+        <key>ProgramArguments</key>
+        <array>
+            <string>#{sbin}/tincd</string>
+            <string>-n</string>
+            <string>mt1</string>
+            <string>--logfile=/usr/local/var/log/tinc.mt1.log</string>
+            <string>--pidfile=/usr/local/var/run/tinc.mt1.pid</string>
+        </array>
+      </dict>
+    </plist>
+  EOS
   end
 
   test do

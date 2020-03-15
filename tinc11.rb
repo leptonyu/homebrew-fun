@@ -1,11 +1,11 @@
 class Tinc11 < Formula
   desc "Virtual Private Network (VPN) tool"
   homepage "https://www.tinc-vpn.org/"
-  url "https://github.com/leptonyu/homebrew-fun/raw/master/tinc-1.1pre17.tar.gz"
-  sha256 "61b9c9f9f396768551f39216edcc41918c65909ffd9af071feb3b5f9f9ac1c27"
+  url "https://github.com/leptonyu/tinc/releases/download/1.1pre17-36-gf46d99f/tinc-1.1pre17-36-gf46d99f.tar.gz"
+  sha256 "56db0d44d02ee5d42f0eaa3238c39f98bf04eb81d5056447acc8add422656d82"
 
   depends_on "lzo"
-  depends_on "openssl@1.1"
+  depends_on "libressl"
   if OS.linux?
   depends_on "readline"
   end
@@ -93,7 +93,9 @@ esac'
       "--sysconfdir=#{etc}",
       "--localstatedir=#{var}",
       "--runstatedir=#{var}/run",
-      "--with-openssl=#{Formula["openssl"].opt_prefix}"
+      "--with-openssl=#{Formula["libressl"].opt_prefix}",
+      "--disable-legacy-protocol",
+      "--enable-jumbograms"
     system "make", "install"
     create_tc
     bin.install "tc"

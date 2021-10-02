@@ -1,8 +1,8 @@
 class Tinc11 < Formula
   desc "Virtual Private Network (VPN) tool"
   homepage "https://www.tinc-vpn.org/"
-  url "https://github.com/leptonyu/tinc/releases/download/1.1pre17-38-g64a8608/tinc-1.1pre17-38-g64a8608.tar.gz"
-  sha256 "092263b2e8a9262488ced83d375edb8c9030e76be1ab5222daac9fe5f014dcaf"
+  url "https://www.tinc-vpn.org/packages/tinc-1.1pre18.tar.gz"
+  sha256 "2757ddc62cf64b411f569db2fa85c25ec846c0db110023f6befb33691f078986"
 
   depends_on "lzo"
   depends_on "libressl"
